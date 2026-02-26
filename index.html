@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">✨ Quote Generator</h1>
+            <button id="viewFavoritesBtn" class="btn btn-secondary" aria-label="View Favorites">
+                <span class="btn-icon">❤️</span>
+                <span class="btn-text">Favorites</span>
+                <span id="favoritesCount" class="badge">0</span>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Category Selection -->
+            <section class="category-section" aria-label="Filter by category">
+                <div class="category-buttons" role="group" aria-label="Category filters">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="success">Success</button>
+                    <button class="category-btn" data-category="love">Love</button>
+                    <button class="category-btn" data-category="coding">Coding</button>
+                    <button class="category-btn" data-category="life">Life</button>
+                    <button class="category-btn" data-category="motivation">Motivation</button>
+                </div>
+            </section>
+
+            <!-- Quote Display -->
+            <section class="quote-section" aria-live="polite">
+                <div class="quote-card" id="quoteCard">
+                    <div class="quote-content" id="quoteContent">
+                        <blockquote class="quote-text" id="quoteText">
+                            "The only way to do great work is to love what you do."
+                        </blockquote>
+                        <cite class="quote-author" id="quoteAuthor">
+                            — Steve Jobs
+                        </cite>
+                        <span class="quote-category" id="quoteCategory">Success</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="newQuoteBtn" class="btn btn-primary" aria-label="Get new quote">
+                        <span class="btn-icon">🔄</span>
+                        <span class="btn-text">New Quote</span>
+                    </button>
+                    
+                    <button id="favoriteBtn" class="btn btn-outline" aria-label="Add to favorites">
+                        <span class="btn-icon">🤍</span>
+                        <span class="btn-text">Favorite</span>
+                    </button>
+                    
+                    <button id="copyBtn" class="btn btn-outline" aria-label="Copy quote">
+                        <span class="btn-icon">📋</span>
+                        <span class="btn-text">Copy</span>
+                    </button>
+                    
+                    <button id="tweetBtn" class="btn btn-twitter" aria-label="Tweet quote">
+                        <span class="btn-icon">🐦</span>
+                        <span class="btn-text">Tweet</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Favorites Modal -->
+        <div id="favoritesModal" class="modal" aria-hidden="true">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content" role="dialog" aria-labelledby="favoritesTitle">
+                <header class="modal-header">
+                    <h2 id="favoritesTitle">❤️ Your Favorite Quotes</h2>
+                    <button id="closeModalBtn" class="close-btn" aria-label="Close favorites">&times;</button>
+                </header>
+                <div class="modal-body">
+                    <div id="favoritesList" class="favorites-list">
+                        <!-- Favorites will be dynamically inserted here -->
+                    </div>
+                    <p id="emptyFavorites" class="empty-message" style="display: none;">
+                        No favorites yet! Start adding quotes you love. ❤️
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast" role="alert" aria-live="assertive">
+            <span id="toastMessage"></span>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
